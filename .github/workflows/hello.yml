@@ -1,0 +1,22 @@
+name: Hello Workflow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  GREETING: Hello from GitHub Actions
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print variables
+        run: |
+          echo "$GREETING"
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "Triggered by: $GITHUB_ACTOR"
